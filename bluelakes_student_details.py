@@ -61,4 +61,58 @@ students_data = [
 def get_parent_email(student_name):
     parents = {
         "NKURUNZIZA Isabelle": ("Joseph Nishimwe", "nishimwejoseph26@gmail.com"),
-        "NYIRANDIKUMANA Sophie": ("Joseph Nishimwe", "josephnish
+        "NYIRANDIKUMANA Sophie": ("Joseph Nishimwe", "josephnishimwe398@gmail.com"),
+        "NDAGIJIMANA Kabuye": ("David Kayumba", "d.kayumba1@alustudent.com"),
+        "MUKAYISENGA Deborah": ("Amanda Inema", "a.inema2@alustudent.com"),
+        "NYIRAMANA Astherie": ("Elisha Rurangwa", "e.rurangwa@alustudent.com"),
+        # Add any other necessary students and their parent details
+    }
+
+    if student_name not in parents:
+        return ("Default Parent", "defaultparent@example.com")
+    
+    return parents[student_name]
+
+# Create Student objects
+students = [Student(name, gender, grades) for name, gender, grades in students_data]
+
+# Sort students by average score in descending order
+students_sorted = sorted(students, key=lambda student: student.calculate_average(), reverse=True)
+
+# Example: Your email credentials
+sender_email = "j.nishimwe@alustudent.com"  # Your email address
+sender_password = "notx xoli zbsl ywxq"  # Your app-specific password
+
+# Send the emails and print the reports
+for idx, student in enumerate(students_sorted):
+    avg = student.calculate_average()
+    status = "Promoted" if avg >= 50 else "Repeat"
+    position_status = f"Position: {idx+1} in class"
+
+    parent_name, parent_email = get_parent_email(student.name)
+
+    # Construct the message based on the student's average score
+    if avg >= 90:
+        message = "Your child has achieved Outstanding Academic Achievement."
+        send_email(sender_email, sender_password, parent_name, parent_email, student.name, status, position_status, avg, message)
+    elif avg < 50:
+        message = "Your child needs improvement and will need to repeat the class."
+        send_email(sender_email, sender_password, parent_name, parent_email, student.name, status, position_status, avg, message)
+    else:
+        message = "Your child has an average performance. Please continue to encourage them."
+        send_email(sender_email, sender_password, parent_name, parent_email, student.name, status, position_status, avg, message)
+    
+    # Print individual student report
+    headers = ["Name", "Gender", "Physics", "Chemistry", "Biology", "English", "Average", "Status", "Position Status"]
+    row = [
+        student.name,
+        student.gender,
+        *student.grades,
+        avg,
+        status,
+        position_status
+    ]
+    
+    print(f"Student Report for {student.name}")
+    print(tabulate([row], headers=headers, tablefmt="fancy_grid"))
+    print("\n" + "="*50 + "\n")
