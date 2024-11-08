@@ -1,13 +1,10 @@
-#!/usr/bin/env python3
-# bluelakes_student_details.py
-
 from student import Student
+from email_utils import send_email  # Importing the send_email function
 from tabulate import tabulate
-import smtplib  # For sending emails (if you plan to send them later)
 
 # List of students and their grades
 students_data = [
-    ("BIZIYAREMYE Fabien", "Male", [98, 55, 60, 78]),
+   ("BIZIYAREMYE Fabien", "Male", [98, 55, 60, 78]),
     ("NYIRAMANA Astherie", "Female", [43, 70, 73, 69]),
     ("HABANABASHAKA Jean Claude", "Male", [70, 90, 70, 87]),
     ("MUKAYISENGA Deborah", "Female", [67, 90, 50, 64]),
@@ -25,6 +22,7 @@ students_data = [
     ("Marie Josee MUKATUYISENGE", "Female", [78, 80, 90, 98]),
     ("NYIRAZANINKA Micheline", "Female", [78, 80, 90, 98]),
     ("TWAGIRAYEZU Jean Marie Vianney", "Female", [78, 80, 90, 98]),
+    # More students with varied marks
     ("KAGABO Donatien", "Male", [65, 45, 50, 68]),
     ("MURORANKWAVU Alice", "Female", [90, 88, 92, 85]),
     ("SABINIMANA Jean Pierre", "Male", [50, 60, 55, 70]),
@@ -58,19 +56,16 @@ students_data = [
     ("NAHIMANA Trésor", "Male", [88, 91, 80, 92]),
 ]
 
-# Define a function to get the parent details
+# Example of the parent email retrieval function (adjust as needed)
 def get_parent_email(student_name):
     parents = {
         "NKURUNZIZA Isabelle": ("Joseph Nishimwe", "nishimwejoseph26@gmail.com"),
         "NYIRANDIKUMANA Sophie": ("Joseph Nishimwe", "josephnishimwe398@gmail.com"),
-        "UWUMUKIZA Jeannine": ("David Kayumba", "d.kayumba1@alustudent.com"),
-        "MUREBWAYIRE Samuel": ("Amanda Inema", "a.inema2@alustudent.com"),
-        "NDAGIJIMANA Kabuye": ("Joseph Nishimwe", "nishimwejoseph26@gmail.com"),
+        # Add more students and parent emails
     }
-    
-    # For all other students, return default email details
+
     if student_name not in parents:
-        return ("Nishimwe Joe", "j.nishimwe@alustudent.com")
+        return ("Default Parent", "defaultparent@example.com")
     
     return parents[student_name]
 
@@ -80,54 +75,26 @@ students = [Student(name, gender, grades) for name, gender, grades in students_d
 # Sort students by average score in descending order
 students_sorted = sorted(students, key=lambda student: student.calculate_average(), reverse=True)
 
-# Function to send email
-def send_email(parent_name, parent_email, student_name, status, position_status, avg):
-    email_content = f"""
-Subject: {status} Report for {student_name}
+# Example: Your email credentials
+sender_email = "youremail@example.com"  # Your email address
+sender_password = "yourpassword"  # Your email password or App-specific password (for Gmail)
 
-Dear {parent_name},
-
-I hope this message finds you well.
-
-I am writing to inform you of the academic performance of your child, {student_name}.
-Their recent performance has been evaluated, and they have achieved an average score of {avg:.2f}. Based on this result:
-
-Status: {status}
-Position: {position_status}
-
-If you have any questions or need further information, please feel free to reach out.
-
-Best regards,
-[Your Full Name]
-[Your Position]
-BlueLakes International School (BLIS)
-[Contact Information]
-    """
-    print(f"Sending email to: {parent_email}")
-    print(email_content)  # Replace with actual email sending code later
-
-# Send the emails based on the conditions
+# Send the emails and print the reports
 for idx, student in enumerate(students_sorted):
     avg = student.calculate_average()
     status = "Promoted" if avg >= 50 else "Repeat"
-    
-    # Position status (1st, 2nd, etc.)
     position_status = f"Position: {idx+1} in class"
-    
-    # Email details
+
     parent_name, parent_email = get_parent_email(student.name)
-    
+
     if avg >= 90:
-        # High performers email
-        send_email(parent_name, parent_email, student.name, "Outstanding Academic Achievement", position_status, avg)
+        send_email(sender_email, sender_password, parent_name, parent_email, student.name, "Outstanding Academic Achievement", position_status, avg)
     elif avg < 50:
-        # Low performers email
-        send_email(parent_name, parent_email, student.name, "Needs Improvement", position_status, avg)
+        send_email(sender_email, sender_password, parent_name, parent_email, student.name, "Needs Improvement", position_status, avg)
     else:
-        # Average performers email
-        send_email(parent_name, parent_email, student.name, "Average Performance", position_status, avg)
+        send_email(sender_email, sender_password, parent_name, parent_email, student.name, "Average Performance", position_status, avg)
     
-    # Print the individual report using tabulate
+    # Print individual report
     headers = ["Name", "Gender", "Physics", "Chemistry", "Biology", "English", "Average", "Status", "Position Status"]
     row = [
         student.name,
@@ -140,4 +107,4 @@ for idx, student in enumerate(students_sorted):
     
     print(f"Student Report for {student.name}")
     print(tabulate([row], headers=headers, tablefmt="fancy_grid"))
-    print("\n" + "="*50 + "\n")  # Separator between reports
+    print("\n" + "="*50 + "\n")
