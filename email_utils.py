@@ -90,7 +90,7 @@ smtp_port = 587  # Standard port for sending email
 # Create the email content
 subject = f"{status} Report for {student_name}"
 body = f"""
-Subject: {subject}
+{subject}
 
 Dear {parent_name},
 
