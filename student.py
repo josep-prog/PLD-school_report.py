@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 class Student:
     def __init__(self, name, gender, grades):
         self.name = name

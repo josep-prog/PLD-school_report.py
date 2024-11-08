@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 from student import Student
 from email_utils import send_email  # Importing the send_email function
 from tabulate import tabulate
