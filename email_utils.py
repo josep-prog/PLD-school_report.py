@@ -103,10 +103,10 @@ def send_email(sender_email, sender_password, parent_name, parent_email, student
     Please let us know if you can attend the meeting. If you have any questions before then, feel free to contact me.
 
     Best regards,  
-    Group9-pld_project 
-    Software department   
-    African Leadership University  
-    0791646062
+    [Your Name]  
+    [Your Position]  
+    [School Name]  
+    [Contact Information]
     """
 
     # Set up the MIME structure for the email
@@ -129,4 +129,5 @@ def send_email(sender_email, sender_password, parent_name, parent_email, student
         print(f"Email sent to {parent_email} for {student_name}.")
     except smtplib.SMTPAuthenticationError as e:
         print(f"Authentication failed for {parent_email}: {e}")
-    except
+    except Exception as e:
+        print
