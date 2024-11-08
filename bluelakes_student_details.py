@@ -79,8 +79,8 @@ students = [Student(name, gender, grades) for name, gender, grades in students_d
 students_sorted = sorted(students, key=lambda student: student.calculate_average(), reverse=True)
 
 # Example: Your email credentials
-sender_email = "j.nishimwe@alustudent.com"  # your email address
-sender_password = "quvs lpit pyrs meql"  # your email password or App-specific password (for Gmail)
+sender_email = "j.nishimwe@alustudent.com"  # Your email address
+sender_password = "your-app-password"  # Your app-specific password
 
 # Send the emails and print the reports
 for idx, student in enumerate(students_sorted):
