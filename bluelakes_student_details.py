@@ -80,7 +80,7 @@ students_sorted = sorted(students, key=lambda student: student.calculate_average
 
 # Example: Your email credentials
 sender_email = "j.nishimwe@alustudent.com"  # Your email address
-sender_password = "your-app-password"  # Your app-specific password
+sender_password = "notx xoli zbsl ywxq"  # Your app-specific password
 
 # Send the emails and print the reports
 for idx, student in enumerate(students_sorted):
