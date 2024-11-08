@@ -103,10 +103,10 @@ def send_email(sender_email, sender_password, parent_name, parent_email, student
     If you have any questions or need further information, please feel free to reach out.
 
     Best regards,
-    [Your Full Name]
-    [Your Position]
+    PLD-group9
+    software development department
     BlueLakes International School (BLIS)
-    [Contact Information]
+    contact Information
     """
 
     # Set up the MIME structure for the email
