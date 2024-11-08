@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -80,33 +83,33 @@ students_sorted = sorted(students, key=lambda student: student.calculate_average
 
 # Function to send emails using smtplib
 def send_email(sender_email, sender_password, parent_name, parent_email, student_name, status, position_status, avg, message):
-    # SMTP server configuration
-    smtp_server = "smtp.gmail.com"  # Use Gmail as an example
-    smtp_port = 587  # Standard port for sending email
+# SMTP server configuration
+smtp_server = "smtp.gmail.com"  # Use Gmail as an example
+smtp_port = 587  # Standard port for sending email
 
-    # Create the email content
-    subject = f"{status} Report for {student_name}"
-    body = f"""
-    Subject: {subject}
+# Create the email content
+subject = f"{status} Report for {student_name}"
+body = f"""
+Subject: {subject}
 
-    Dear {parent_name},
+Dear {parent_name},
 
-    I hope you are doing well. I am happy to share that your child, {student_name}, has done an amazing job in their studies, scoring an average of {avg:.2f}. Based on this result, we would like to inform you of the following:
+I hope you are doing well. I am happy to share that your child, {student_name}, has done an amazing job in their studies, scoring an average of {avg:.2f}. Based on this result, we would like to inform you of the following:
 
-    {message}
+{message}
 
-    Meeting Details:
+Meeting Details:
     - Date: 17th December 2024
     - Time: 9:00 AM to 11:00 AM
     - Location: BlueLakes International School Main Hall
 
-    Please let us know if you can attend the meeting. If you have any questions before then, feel free to contact me.
+please let us know if you can attend the meeting. If you have any questions before then, feel free to contact me.
 
-    Best regards,  
-    [Your Name]  
-    [Your Position]  
-    [School Name]  
-    [Contact Information]
+Best regards,   
+Group9_PLD-project
+Student Software DEpartment
+African Leadership Universtiy
+0791646062
     """
 
     # Set up the MIME structure for the email
