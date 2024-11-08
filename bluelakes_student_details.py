@@ -69,7 +69,8 @@ def get_parent_email(student_name):
     }
 
     if student_name not in parents:
-        return ("Default Parent", "defaultparent@example.com")
+        # Return Joe Nishimwe as the default parent and his email
+        return ("Joe Nishimwe", "josephnishimwe398@alustudent.com")
     
     return parents[student_name]
 
