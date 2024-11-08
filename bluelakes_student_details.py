@@ -64,9 +64,9 @@ def get_parent_email(student_name):
     parents = {
         "NKURUNZIZA Isabelle": ("Joseph Nishimwe", "nishimwejoseph26@gmail.com"),
         "NYIRANDIKUMANA Sophie": ("Joseph Nishimwe", "josephnishimwe398@gmail.com"),
-        "NDAGIJIMANA Kabuye": ("David Kayumba", "d.kayumba1@alustudent.com"
-        "MUKAYISENGA Deborah": ("Amanda Inema","a.inema2@alustudent.com"
-        "NYIRAMANA Astherie": ("Elisha Rurangwa", "e.rurangwa@alustudent.com"
+        "NDAGIJIMANA Kabuye": ("David Kayumba", "d.kayumba1@alustudent.com")
+        "MUKAYISENGA Deborah": ("Amanda Inema","a.inema2@alustudent.com")
+        "NYIRAMANA Astherie": ("Elisha Rurangwa", "e.rurangwa@alustudent.com)"
     }
 
     if student_name not in parents:
