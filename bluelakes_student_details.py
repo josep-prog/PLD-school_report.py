@@ -106,4 +106,12 @@ for idx, student in enumerate(students_sorted):
     row = [
         student.name,
         student.gender,
-        *student.grades
+        *student.grades,
+        avg,
+        status,
+        position_status
+    ]
+    
+    print(f"Student Report for {student.name}")
+    print(tabulate([row], headers=headers, tablefmt="fancy_grid"))
+    print("\n" + "="*50 + "\n")
