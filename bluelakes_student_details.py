@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
-
 from student import Student
 from email_utils import send_email  # Importing the send_email function
 from tabulate import tabulate
 
 # List of students and their grades
 students_data = [
-   ("BIZIYAREMYE Fabien", "Male", [98, 55, 60, 78]),
+    ("BIZIYAREMYE Fabien", "Male", [98, 55, 60, 78]),
     ("NYIRAMANA Astherie", "Female", [43, 70, 73, 69]),
     ("HABANABASHAKA Jean Claude", "Male", [70, 90, 70, 87]),
     ("MUKAYISENGA Deborah", "Female", [67, 90, 50, 64]),
@@ -25,7 +24,6 @@ students_data = [
     ("Marie Josee MUKATUYISENGE", "Female", [78, 80, 90, 98]),
     ("NYIRAZANINKA Micheline", "Female", [78, 80, 90, 98]),
     ("TWAGIRAYEZU Jean Marie Vianney", "Female", [78, 80, 90, 98]),
-    # More students with varied marks
     ("KAGABO Donatien", "Male", [65, 45, 50, 68]),
     ("MURORANKWAVU Alice", "Female", [90, 88, 92, 85]),
     ("SABINIMANA Jean Pierre", "Male", [50, 60, 55, 70]),
@@ -65,7 +63,7 @@ def get_parent_email(student_name):
         "NKURUNZIZA Isabelle": ("Joseph Nishimwe", "nishimwejoseph26@gmail.com"),
         "NYIRANDIKUMANA Sophie": ("Joseph Nishimwe", "josephnishimwe398@gmail.com"),
         "NDAGIJIMANA Kabuye": ("David Kayumba", "d.kayumba1@alustudent.com"),
-        "MUKAYISENGA Deborah": ("Amanda Inema","a.inema2@alustudent.com"),
+        "MUKAYISENGA Deborah": ("Amanda Inema", "a.inema2@alustudent.com"),
         "NYIRAMANA Astherie": ("Elisha Rurangwa", "e.rurangwa@alustudent.com")
     }
 
@@ -92,14 +90,18 @@ for idx, student in enumerate(students_sorted):
 
     parent_name, parent_email = get_parent_email(student.name)
 
+    # Construct the message based on the student's average score
     if avg >= 90:
-        send_email(sender_email, sender_password, parent_name, parent_email, student.name, "Outstanding Academic Achievement", position_status, avg)
+        message = "Your child has achieved Outstanding Academic Achievement."
+        send_email(sender_email, sender_password, parent_name, parent_email, student.name, status, position_status, avg, message)
     elif avg < 50:
-        send_email(sender_email, sender_password, parent_name, parent_email, student.name, "Needs Improvement", position_status, avg)
+        message = "Your child needs improvement and will need to repeat the class."
+        send_email(sender_email, sender_password, parent_name, parent_email, student.name, status, position_status, avg, message)
     else:
-        send_email(sender_email, sender_password, parent_name, parent_email, student.name, "Average Performance", position_status, avg)
+        message = "Your child has an average performance. Please continue to encourage them."
+        send_email(sender_email, sender_password, parent_name, parent_email, student.name, status, position_status, avg, message)
     
-    # Print individual report
+    # Print individual student report
     headers = ["Name", "Gender", "Physics", "Chemistry", "Biology", "English", "Average", "Status", "Position Status"]
     row = [
         student.name,
