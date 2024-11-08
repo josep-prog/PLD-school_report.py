@@ -84,7 +84,7 @@ students_sorted = sorted(students, key=lambda student: student.calculate_average
 # Function to send emails using smtplib
 def send_email(sender_email, sender_password, parent_name, parent_email, student_name, status, position_status, avg, message):
 # SMTP server configuration
-smtp_server = "smtp.gmail.com"  # Use Gmail as an example
+smtp_server = "j.nishimwe@alustudent.com"  # Use Gmail as an example
 smtp_port = 587  # Standard port for sending email
 
 # Create the email content
