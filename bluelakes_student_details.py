@@ -64,7 +64,9 @@ def get_parent_email(student_name):
     parents = {
         "NKURUNZIZA Isabelle": ("Joseph Nishimwe", "nishimwejoseph26@gmail.com"),
         "NYIRANDIKUMANA Sophie": ("Joseph Nishimwe", "josephnishimwe398@gmail.com"),
-        # Add more students and parent emails
+        "NDAGIJIMANA Kabuye": ("David Kayumba", "d.kayumba1@alustudent.com"
+        "MUKAYISENGA Deborah": ("Amanda Inema","a.inema2@alustudent.com"
+        "NYIRAMANA Astherie": ("Elisha Rurangwa", "e.rurangwa@alustudent.com"
     }
 
     if student_name not in parents:
@@ -79,8 +81,8 @@ students = [Student(name, gender, grades) for name, gender, grades in students_d
 students_sorted = sorted(students, key=lambda student: student.calculate_average(), reverse=True)
 
 # Example: Your email credentials
-sender_email = "youremail@example.com"  # Your email address
-sender_password = "yourpassword"  # Your email password or App-specific password (for Gmail)
+sender_email = "j.nishimwe@alustudent.com"  # my email address
+sender_password = "quvs lpit pyrs meql"  # Your email password or App-specific password (for Gmail)
 
 # Send the emails and print the reports
 for idx, student in enumerate(students_sorted):
