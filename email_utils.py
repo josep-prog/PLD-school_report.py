@@ -119,7 +119,7 @@ def send_student_reports():
 
 # SMTP configuration details (replace with your actual values)
 sender_email = "j.nishimwe@alustudent.com"  # Your email address
-sender_password = "pkykztfwroaygsf"  # Your email password or app-specific password
+sender_password = "quvs lpit pyrs meql"  # Your email password or app-specific password
 
 # Start sending student reports
 send_student_reports()
