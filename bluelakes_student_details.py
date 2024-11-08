@@ -79,8 +79,8 @@ students = [Student(name, gender, grades) for name, gender, grades in students_d
 students_sorted = sorted(students, key=lambda student: student.calculate_average(), reverse=True)
 
 # Example: Your email credentials
-sender_email = "j.nishimwe@alustudent.com"  # my email address
-sender_password = "quvs lpit pyrs meql"  # Your email password or App-specific password (for Gmail)
+sender_email = "j.nishimwe@alustudent.com"  # your email address
+sender_password = "quvs lpit pyrs meql"  # your email password or App-specific password (for Gmail)
 
 # Send the emails and print the reports
 for idx, student in enumerate(students_sorted):
@@ -106,12 +106,4 @@ for idx, student in enumerate(students_sorted):
     row = [
         student.name,
         student.gender,
-        *student.grades,
-        avg,
-        status,
-        position_status
-    ]
-    
-    print(f"Student Report for {student.name}")
-    print(tabulate([row], headers=headers, tablefmt="fancy_grid"))
-    print("\n" + "="*50 + "\n")
+        *student.grades
